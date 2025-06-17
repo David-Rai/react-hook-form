@@ -25,7 +25,12 @@ const App = () => {
           {...register("text",
             {
               required: true,
-              minLength: { value: 3, message: "minimum length 3 is required" }
+              minLength: { value: 3, message: "minimum length 3 is required" },
+              validate:{
+                demo:(v)=>{
+                  console.log(v)
+                }
+              }
 
             })}
           className='input'
@@ -42,8 +47,10 @@ const App = () => {
           {...register("email",
             {
               required: true,
-              // minLength: { value: 3, message: "minimum length 3 is required" }
-
+              pattern:{
+                value:/^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message:"input the correct email format"
+              }
             })}
           className='input'
           type="email" name="email" id="email"
