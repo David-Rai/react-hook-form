@@ -17,7 +17,8 @@ const App = () => {
       <h1 className='text-2xl mb-2'>Form Validation</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='h-[300px] lg:w-[30%] w-[80%] bg-white flex flex-col 
+        className='min-h-[300px] lg:w-[30%] w-[80%]
+         bg-white flex flex-col gap-2 py-3
         items-center justify-around rounded-md'
       >
         {/* Name input field */}
@@ -26,8 +27,8 @@ const App = () => {
             {
               required: true,
               minLength: { value: 3, message: "minimum length 3 is required" },
-              validate:{
-                demo:(v)=>{
+              validate: {
+                demo: (v) => {
                   console.log(v)
                 }
               }
@@ -47,9 +48,9 @@ const App = () => {
           {...register("email",
             {
               required: true,
-              pattern:{
-                value:/^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message:"input the correct email format"
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "input the correct email format"
               }
             })}
           className='input'
@@ -62,14 +63,57 @@ const App = () => {
 
         {/* Password input field */}
         <input
-          {...register("password",{
-            required:true,
-            min:{value:5,message:"minimum 5 length is required"}
+          {...register("password", {
+            required: true,
+            minLength: { value: 5, message: "minimum 5 length is required" }
           })}
           className='input' type="password"
           name="password" id="password" placeholder='password' />
         {
           errors.password && <p className='text-red-500'>{errors.password.message}</p>
+        }
+
+        {/* Select validation */}
+        <select name="select" {...register("country", {
+          required: "Country need to be selected"
+        })}>
+          <option value="">Select Country</option>
+          <option value="nepal">nepal</option>
+          <option value="india">india</option>
+          <option value="china">china</option>
+        </select>
+
+        {
+          errors.country && <p className='text-red-500'>{errors.country.message}</p>
+        }
+
+        {/* Checkbox */}
+        <div className='flex gap-2'>
+          <input type="checkbox" name="checkbox" {...register("checkbox", {
+            required: "Agree the terms"
+          })} />
+          <p>Terms and condition</p>
+        </div>
+
+        {
+          errors.checkbox && <p className='text-red-500'>{errors.checkbox.message}</p>
+        }
+
+        {/* Radio buttons */}
+        <label>
+          <input type="radio" {...register("gender", {
+            required: "Select the gender"
+          })} />
+          Male
+        </label>
+
+        <label>
+          <input type="radio" {...register("gender")} />
+        Female
+        </label>
+
+        {
+          errors.gender && <p className='text-red-500'>{errors.gender.message}</p>
         }
 
         <button className='btn' type='submit'>Submit</button>
