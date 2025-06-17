@@ -17,7 +17,7 @@ const App = () => {
       <h1 className='text-2xl mb-2'>Form Validation</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='h-[300px] lg:w-[20%] w-[80%] bg-white flex flex-col 
+        className='h-[300px] lg:w-[30%] w-[80%] bg-white flex flex-col 
         items-center justify-around rounded-md'
       >
         {/* Name input field */}
