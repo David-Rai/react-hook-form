@@ -17,17 +17,35 @@ npm run dev
 ## Visit
 http://localhost:5173/
 
-## Simple example
-```bash
-        {/* Password input field */}
-        <input
-          {...register("password",{
-            required:true,
-            min:{value:5,message:"minimum 5 length is required"}
-          })}
-          className='input' type="password"
-          name="password" id="password" placeholder='password' />
-        {
-          errors.password && <p className='text-red-500'>{errors.password.message}</p>
-        }
-```
+# 1. Basic Topics to learn
+- useForm()
+- Register()
+- HandleSubmit()
+- FormState(errors)
+
+# 2. Built in Validation Rules
+
+- required
+- min,max
+- minLength,maxLength
+- pattern
+- validate
+
+# 3. Controlled Componenets
+- Select
+- checkbox
+- radio
+- textarea
+
+# 4. Advanced Validation
+- custom `validate()` functions
+- cross-field validation using (`getValues()` or `watch()`)
+
+# 5. Errors Handling
+- `isValid`
+- `isDirty`
+- `isSubmitting`
+
+# 6. File Uploads
+- Handle `<input type="file" />`
+- use `FormData` to send files
